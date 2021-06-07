@@ -1,0 +1,29 @@
+<div id="formContainer">
+  <div id="formId">
+    <h1>Login</h1>
+    <form class="mat-card-content" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <mat-form-field mat-form-field appearance="outline">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" placeholder="Username"/>
+        <button *ngIf="loginForm.get('username')?.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="loginForm.get('username')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-icon matPrefix>person</mat-icon>
+      </mat-form-field>
+      <mat-form-field class="mat-form-field" appearance="outline">
+        <mat-label>Password</mat-label>
+        <input matInput formControlName="password" placeholder="Password" [type]="showPwd ? 'text' : 'password'"/>
+        <button *ngIf="loginForm.get('password')?.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="loginForm.get('password')?.setValue('')">
+          <mat-icon>close</mat-icon>
+        </button>
+        <mat-icon style="cursor: pointer" matPrefix (click)="showPassword()">password</mat-icon>
+      </mat-form-field>
+      <div>
+        <button mat-raised-button mat-button>Log In</button>
+        <div matRipple mat-ripple></div>
+      </div>
+    </form>
+  </div>
+</div>

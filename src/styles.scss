@@ -1,1 +1,33 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+div#formContainer {
+  height: 100%;
+  width: 100%;
+  background: url('~src/assets/images/bg.png') no-repeat;
+  background-size: cover;
+  display: grid;
+
+  div#formId {
+    border-radius: 25px;
+    text-align: center;
+    margin: auto;
+    width: 20%;
+    background-color: white;
+    padding-bottom: 3%;
+    padding-top: 3%;
+    box-shadow: 3px 5px 0px rgba(0,0,0,0.20);
+  }
+
+  .mat-form-field {
+    width: 80%;
+  }
+
+  button {
+    background-color: rgb(66,135,213);
+  }
+}
