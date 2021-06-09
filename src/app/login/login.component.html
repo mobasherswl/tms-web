@@ -1,25 +1,48 @@
 <div id="formContainer">
   <div id="formId">
     <h1>Login</h1>
-    <form class="mat-card-content" [formGroup]="loginForm" (ngSubmit)="submit()">
-      <mat-form-field mat-form-field appearance="outline">
+    <form id="loginForm" class="mat-card-content" [formGroup]="loginForm" (ngSubmit)="submit()">
+      <mat-form-field class="mat-form-field" appearance="outline">
         <mat-label>Username</mat-label>
-        <input matInput formControlName="username" placeholder="Username"/>
-        <button *ngIf="loginForm.get('username')?.value" matSuffix mat-icon-button aria-label="Clear"
-                (click)="loginForm.get('username')?.setValue('')">
+        <input matInput formControlName="username" placeholder="Username"
+               [minlength]="5" [maxlength]="10"/>
+        <button *ngIf="username?.value" matSuffix mat-icon-button
+                (click)="username?.setValue('')">
           <mat-icon>close</mat-icon>
         </button>
         <mat-icon matPrefix>person</mat-icon>
+        <mat-error *ngIf="username?.errors?.required">
+          Username is required
+        </mat-error>
+        <mat-error *ngIf="username?.errors?.minlength">
+          Username must be at least 5 characters long
+        </mat-error>
+        <mat-error *ngIf="username?.errors?.maxLength">
+          Username must not be more than 10 characters long
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="mat-form-field" appearance="outline">
         <mat-label>Password</mat-label>
-        <input matInput formControlName="password" placeholder="Password" [type]="showPwd ? 'text' : 'password'"/>
-        <button *ngIf="loginForm.get('password')?.value" matSuffix mat-icon-button aria-label="Clear"
-                (click)="loginForm.get('password')?.setValue('')">
+        <input matInput formControlName="password" placeholder="Password" [type]="showPwd ? 'text' : 'password'" [minLength]="8" [maxLength]="16"/>
+        <button *ngIf="password?.value" matSuffix mat-icon-button
+                (click)="password?.setValue('')">
           <mat-icon>close</mat-icon>
         </button>
-        <mat-icon style="cursor: pointer" matPrefix (click)="showPassword()">password</mat-icon>
+        <mat-icon style="cursor: pointer" matPrefix (click)="toggleShowPassword()">password</mat-icon>
+        <mat-error *ngIf="password?.errors?.required">
+          Password is required
+        </mat-error>
+        <mat-error *ngIf="password?.errors?.minlength">
+          Password must be at least 8 characters long
+        </mat-error>
+        <mat-error *ngIf="password?.errors?.maxLength">
+          Password must not be more than 16 characters long
+        </mat-error>
       </mat-form-field>
+      <div id="options">
+        <mat-checkbox id="rememberMe" formControlName="rememberMe" (click)="unsetRememberMe()">Remember Me</mat-checkbox>
+        <a [routerLink]="">Forgot Password</a>
+      </div>
       <div>
         <button mat-raised-button mat-button>Log In</button>
         <div matRipple mat-ripple></div>
