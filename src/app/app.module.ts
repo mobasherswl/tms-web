@@ -13,6 +13,8 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatRippleModule} from "@angular/material/core";
 import {MatCheckboxModule} from "@angular/material/checkbox";
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {HttpClientModule} from "@angular/common/http";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatIconModule,
     ReactiveFormsModule,
     MatRippleModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    HttpClientModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

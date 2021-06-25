@@ -3,7 +3,10 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'http://localhost:8080',
+  loginPath: '/cmp/oauth/token',
+  clientCredentials: 'Y21wQ2xpZW50SWQ6Y2xpZW50UGFzc3dvcmQ='
 };
 
 /*

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {Router} from "@angular/router";
+import {AuthService} from "../auth/auth.service";
 
 @Component({
   selector: 'app-login',
@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private router: Router
+    private authService:AuthService
   ) {
     this.loginForm = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(10)]],
@@ -40,14 +40,7 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('username', this.username?.value);
     }
 
-    this.router.navigateByUrl('/dashboard').then(r => {
-        if (r) {
-          console.log('success');
-        } else {
-          console.log('failed')
-        }
-      }
-    );
+    this.authService.login(this.username?.value, this.password?.value);
   }
 
   toggleShowPassword() {
